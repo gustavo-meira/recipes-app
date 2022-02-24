@@ -1,3 +1,5 @@
+import { LOGIN_PAGE } from "../utils/pages";
+
 const EMAIL_INPUT_TEST_ID = '[data-cy="email-input"]';
 const PASSWORD_INPUT_TEST_ID = '[data-cy="password-input"]';
 const LOGIN_BUTTON_TEST_ID = '[data-cy="login-submit-button"]';
@@ -10,7 +12,7 @@ const EMAIL_LOCAL_STORAGE = JSON.stringify({ email: VALID_EMAIL });
 
 describe('Testa os componentes da pagina de login', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit(LOGIN_PAGE);
   });
 
   it('Se possuem os testid corretos', () => {
