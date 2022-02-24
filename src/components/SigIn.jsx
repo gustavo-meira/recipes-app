@@ -13,6 +13,10 @@ const SignIn = () => {
     );
   };
 
+  const saveEmailOnLocalStorage = () => (
+    localStorage.setItem('user', JSON.stringify({ email: userEmail }))
+  );
+
   return (
     <div>
       <input
@@ -33,6 +37,7 @@ const SignIn = () => {
         data-cy="login-submit-button"
         type="button"
         disabled={ testInputs() }
+        onClick={ saveEmailOnLocalStorage }
       >
         Logar
       </button>
