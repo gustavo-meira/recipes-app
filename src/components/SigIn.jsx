@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -33,14 +34,16 @@ const SignIn = () => {
         value={ userPassword }
         onChange={ ({ target: { value } }) => setUserPassword(value) }
       />
-      <button
-        data-cy="login-submit-button"
-        type="button"
-        disabled={ testInputs() }
-        onClick={ saveEmailOnLocalStorage }
-      >
-        Logar
-      </button>
+      <Link to="/foods">
+        <button
+          data-cy="login-submit-button"
+          type="button"
+          disabled={ testInputs() }
+          onClick={ saveEmailOnLocalStorage }
+        >
+          Logar
+        </button>
+      </Link>
     </div>
   );
 };
