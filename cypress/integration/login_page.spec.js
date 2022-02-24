@@ -54,7 +54,7 @@ describe('Testa os componentes da pagina de login', () => {
     cy.getLocalStorage('user').should('equal', EMAIL_LOCAL_STORAGE);
   });
 
-  it.only('O botão de logar deve levar o usuario para a pagina "/foods"', () => {
+  it('O botão de logar deve levar o usuario para a pagina "/foods"', () => {
     cy.get(EMAIL_INPUT_TEST_ID).type(VALID_EMAIL);
     cy.get(PASSWORD_INPUT_TEST_ID).type(VALID_PASSWORD);
     cy.get(LOGIN_BUTTON_TEST_ID).click();
