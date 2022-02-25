@@ -1,6 +1,17 @@
 import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
+import DetailsRecipePage from '../pages/DetailsRecipePage';
+import DoneRecipesPage from '../pages/DoneRecipesPage';
+import ExploreFoodsByNationalitiesPage from '../pages/ExploreFoodsByNationalitiesPage';
+import ExplorePage from '../pages/ExplorePage';
+import ExploreRecipesByIngredientPage from '../pages/ExploreRecipesByIngredientPage';
+import ExploreRecipesPage from '../pages/ExploreRecipesPage';
+import FavoriteRecipesPage from '../pages/FavoriteRecipesPage';
+import InProgressRecipePage from '../pages/InProgressRecipePage';
 import LoginPage from '../pages/LoginPage';
+import MainRecipesPage from '../pages/MainRecipesPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import ProfilePage from '../pages/ProfilePage';
 
 const Routes = () => (
   <Switch>
@@ -27,18 +38,18 @@ const Routes = () => (
     <Route
       exact
       path="/explore/foods/ingredients"
-      element={ <ExploreRecipesByIngredient /> }
+      element={ <ExploreRecipesByIngredientPage /> }
     />
     <Route
       exact
       path="/explore/drinks/ingredients"
-      element={ <ExploreRecipesByIngredient /> }
+      element={ <ExploreRecipesByIngredientPage /> }
     />
 
     <Route
       exact
       path="/explore/foods/nationalities"
-      element={ <ExploreFoodsByNationalities /> }
+      element={ <ExploreFoodsByNationalitiesPage /> }
     />
 
     <Route exact path="/profile" element={ <ProfilePage /> } />
