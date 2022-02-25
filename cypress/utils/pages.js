@@ -2,10 +2,10 @@
 export const LOGIN_PAGE = 'http://localhost:3000/';
 export const FOODS_PAGE = 'http://localhost:3000/foods';
 export const DRINKS_PAGE = 'http://localhost:3000/drinks';
-export const FOODS_DETAILS_PAGE = (id) => `http://localhost:3000/foods/${id}`;
-export const DRINKS_DETAILS_PAGE = (id) => `http://localhost:3000/drinks/${id}`;
-export const FOODS_IN_PROGRESS_PAGE = (id) => `http://localhost:3000/foods/${id}/in-progress`;
-export const DRINKS_IN_PROGRESS_PAGE = (id) => `http://localhost:3000/drinks/${id}/in-progress`;
+export const FOOD_DETAILS_PAGE = (id) => `http://localhost:3000/foods/${id}`;
+export const DRINK_DETAILS_PAGE = (id) => `http://localhost:3000/drinks/${id}`;
+export const FOOD_IN_PROGRESS_PAGE = (id) => `http://localhost:3000/foods/${id}/in-progress`;
+export const DRINK_IN_PROGRESS_PAGE = (id) => `http://localhost:3000/drinks/${id}/in-progress`;
 export const DONE_RECIPES_PAGE = 'http://localhost:3000/done-recipes';
 export const FAVORITE_RECIPES_PAGE = 'http://localhost:3000/favorite-recipes';
 export const EXPLORE_RECIPES_PAGE = 'http://localhost:3000/explore';
