@@ -31,32 +31,100 @@ describe('Testa se o Header existe nas paginas corretas', () => {
     cy.get(SEARCH_BUTTON_TEST_ID).should('not.exist');
   };
 
-  Object.entries(pages).forEach(([key, value]) => {
-    if (key.includes('DETAILS') || key.includes('PROGRESS')) {
-      it('Não existe header', () => {
-        cy.visit(value(123));
+  it('Não existe header na tela de login', () => {
+    cy.visit(pages.LOGIN_PAGE);
 
-        notHasHeader();
-      });
-    } else if (key.includes('EXPLORE') || key.includes('DONE_RECIPES') || key.includes('FAVORITE_RECIPES') || key.includes('PROFILE')) {
-      it('Existe header mas ele não tem botão de busca', () => {
-        cy.visit(value);
+    notHasHeader();
+  });
 
-        hasHeader(false);
-      });
-    } else if (key.includes('LOGIN')) {
-      it('Não existe header', () => {
-        cy.visit(value);
-        
-        notHasHeader();
-      });
-    } else {
-      it('Existe header e ele tem botão de busca', () => {
-        cy.visit(value);
-  
-        hasHeader();
-      });
-    }
+  it('Header existe e tem o botão de busca na pagina principal de comidas', () => {
+    cy.visit(pages.FOODS_PAGE);
+
+    hasHeader();
+  });
+
+  it('Header existe e tem o botão de busca na pagina principal de bebidas', () => {
+    cy.visit(pages.DRINKS_PAGE);
+
+    hasHeader();
+  });
+
+  it('Não tem header na tela de detalhes de uma receita de comida', () => {
+    cy.visit(pages.FOOD_DETAILS_PAGE(123));
+
+    notHasHeader();
+  });
+
+  it('Não tem header na tela de detalhes de uma receita de bebida', () => {
+    cy.visit(pages.DRINK_DETAILS_PAGE(123));
+
+    notHasHeader();
+  });
+
+  it('Não tem header na tela de receita em progresso de uma comida', () => {
+    cy.visit(pages.FOOD_IN_PROGRESS_PAGE(123));
+
+    notHasHeader();
+  });
+
+  it('Não tem header na tela de receita em progresso de uma bebida', () => {
+    cy.visit(pages.DRINK_IN_PROGRESS_PAGE(123));
+
+    notHasHeader();
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina principal de explorar', () => {
+    cy.visit(pages.EXPLORE_RECIPES_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de explorar comidas', () => {
+    cy.visit(pages.EXPLORE_FOODS_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de explorar por bebidas', () => {
+    cy.visit(pages.EXPLORE_DRINKS_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de explorar comidas por ingrediente', () => {
+    cy.visit(pages.EXPLORE_FOODS_BY_INGREDIENT_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de explorar bebidas por ingrediente', () => {
+    cy.visit(pages.EXPLORE_DRINKS_BY_INGREDIENT_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de explorar comidas por nacionalidade', () => {
+    cy.visit(pages.EXPLORE_FOODS_BY_NATIONALITY_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de perfil', () => {
+    cy.visit(pages.PROFILE_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de receitas feitas', () => {
+    cy.visit(pages.DONE_RECIPES_PAGE);
+
+    hasHeader(false);
+  });
+
+  it('Header existe mas não tem o botão de busca na pagina de receitas favoritas', () => {
+    cy.visit(pages.FAVORITE_RECIPES_PAGE);
+
+    hasHeader(false);
   });
 
 });
