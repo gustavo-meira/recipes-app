@@ -130,18 +130,20 @@ describe('Testa se o Header existe nas paginas corretas', () => {
 });
 
 describe('Redireciona a pessoa usuaria para a pagina de perfil caso clique na foto', () => {
-  Object.entries(pages).forEach(([key, value]) => {
-    if (key.includes('FOODS') || key.includes('DRINKS')
-    || key.includes('FAVORITE_RECIPES') || key.includes('DONE_RECIPES')
-    || key.includes('PROFILE')) {
-      it('Redireciona a pessoa usuaria para a pagina correta', () => {
-        cy.visit(value);
+  it('Redireciona a pessoa usuaria para o perfil dela pela tela de comidas', () => {
+    cy.visit(pages.FOODS_PAGE);
 
-        cy.get(PROFILE_BUTTON_TEST_ID).click();
+    cy.get(PROFILE_BUTTON_TEST_ID).click();
 
-        cy.url().should('equal', pages.PROFILE_PAGE);
-      });
-    }
+    cy.url().should('equal', pages.PROFILE_PAGE);
+  });
+
+  it('Redireciona a pessoa usuaria para o perfil dela pela tela de bebidas', () => {
+    cy.visit(pages.DRINKS_PAGE);
+
+    cy.get(PROFILE_BUTTON_TEST_ID).click();
+
+    cy.url().should('equal', pages.PROFILE_PAGE);
   });
 });
 
