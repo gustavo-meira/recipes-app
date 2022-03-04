@@ -7,6 +7,7 @@ const RecipeList = () => {
   const location = useLocation();
   const [recipes, setRecipes] = useState([]);
   const type = location.pathname.includes('foods') ? 'meals' : 'drinks';
+  console.log(recipes);
 
   useEffect(() => {
     if (location.search) {
