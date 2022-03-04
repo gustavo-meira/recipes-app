@@ -1,15 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const recipeType = {
+  meals: {
+    name: 'strMeal',
+    image: 'strMealThumb',
+  },
+  drinks: {
+    name: 'strDrink',
+    image: 'strDrinkThumb',
+  },
+};
+
 const RecipeItem = ({ recipe, type }) => {
-  let recipeName;
-  if (type === 'meals') {
-    recipeName = recipe.strMeal;
-  } else {
-    recipeName = recipe.strDrink;
-  }
+  const recipeName = recipe[recipeType[type].name];
+  const recipeImage = recipe[recipeType[type].image];
+
   return (
-    <h2>{ recipeName }</h2>
+    <div>
+      <img src={ recipeImage } alt={ recipeName } />
+      <h2>{ recipeName }</h2>
+    </div>
   );
 };
 
