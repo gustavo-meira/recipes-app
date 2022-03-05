@@ -6,9 +6,13 @@ import RecipeItem from './RecipeItem';
 const RecipeList = () => {
   const location = useLocation();
   const [recipes, setRecipes] = useState([]);
+  const [pagination, setPagination] = useState([]);
+  const [paginationIndex, setPaginationIndex] = useState(0);
   const type = location.pathname.includes('foods') ? 'meals' : 'drinks';
+  const recipesPerPage = 12;
 
   useEffect(() => {
+    setPaginationIndex(0);
     if (location.search) {
       const [currentTerm, currentSearch] = location.search.split('=');
       fetchRecipes(type, { currentTerm, currentSearch })
@@ -25,18 +29,53 @@ const RecipeList = () => {
     }
   }, [type, location]);
 
+  useEffect(() => {
+    if (recipes.length > recipesPerPage) {
+      let index = 1;
+      let currRecipesLength = recipes.length;
+      while (currRecipesLength >= recipesPerPage) {
+        index += 1;
+        currRecipesLength -= recipesPerPage;
+      }
+      const paginationArray = Array.from(Array(index), (_, i) => i + 1);
+      setPagination(paginationArray);
+    }
+  }, [recipes]);
+
+  const startRecipesPagination = paginationIndex * recipesPerPage;
+  const endRecipesPagination = (paginationIndex + 1) * recipesPerPage;
+  const currentRecipesPagination = recipes.slice(
+    startRecipesPagination, endRecipesPagination,
+  );
+
   return (
-    <ul>
+    <>
+      <ul>
+        {
+          currentRecipesPagination.map((recipe, index) => (
+            <RecipeItem
+              key={ index }
+              type={ type }
+              recipe={ recipe }
+            />
+          ))
+        }
+      </ul>
       {
-        recipes.map((recipe, index) => (
-          <RecipeItem
-            key={ index }
-            type={ type }
-            recipe={ recipe }
-          />
+        pagination.map((pageNumber) => (
+          <button
+            type="button"
+            key={ pageNumber }
+            onClick={ () => {
+              setPaginationIndex(pageNumber - 1);
+              window.scrollTo(0, 0);
+            } }
+          >
+            { pageNumber }
+          </button>
         ))
       }
-    </ul>
+    </>
   );
 };
 
