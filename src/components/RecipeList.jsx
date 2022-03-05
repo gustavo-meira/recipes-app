@@ -7,13 +7,18 @@ const RecipeList = () => {
   const location = useLocation();
   const [recipes, setRecipes] = useState([]);
   const type = location.pathname.includes('foods') ? 'meals' : 'drinks';
-  console.log(recipes);
 
   useEffect(() => {
     if (location.search) {
-      const currentCategory = location.search.split('=')[1];
-      fetchRecipes(type, currentCategory)
-        .then((data) => setRecipes(data));
+      const [currentTerm, currentSearch] = location.search.split('=');
+      fetchRecipes(type, { currentTerm, currentSearch })
+        .then((data) => {
+          if (data.length > 0) {
+            setRecipes(data);
+          } else {
+            alert('Nada foi encontrado.');
+          }
+        });
     } else {
       fetchRecipes(type)
         .then((data) => setRecipes(data));

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchInput from './SearchInput';
 import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
 import userIcon from '../assets/images/user.svg';
 import searchIcon from '../assets/images/search-icon.svg';
 
 const Header = ({ searchButton }) => {
   const [showSearchInput, setShowSearchInput] = useState(false);
-  
+
   const changeShowSearchInput = () => {
     setShowSearchInput((value) => !value);
   };
@@ -20,12 +20,12 @@ const Header = ({ searchButton }) => {
       <h2 data-cy="app-title">Recipes App</h2>
       {
         searchButton && (
-          <button data-cy="search-button" onClick={ changeShowSearchInput }>
+          <button type="button" data-cy="search-button" onClick={ changeShowSearchInput }>
             <img src={ searchIcon } alt="Icone de busca" />
           </button>
         )
       }
-      { showSearchInput && <SearchInput /> }
+      { showSearchInput && <SearchBar /> }
     </header>
   );
 };

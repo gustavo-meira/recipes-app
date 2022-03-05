@@ -1,14 +1,20 @@
 const links = {
   meals: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
   drinks: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
-  mealsCategory: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
-  drinksCategory: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=',
+  mealscategory: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
+  drinkscategory: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=',
+  mealsname: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
+  drinksname: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
+  'mealsfirst-letter': 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
+  'drinksfirst-letter': 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
+  mealsingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
+  drinksingredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=',
 };
 
-const fetchRecipes = async (type, category) => {
-  if (category) {
-    const categoryLink = links[`${type}Category`] + category;
-    console.log(categoryLink);
+const fetchRecipes = async (type, searchBy) => {
+  if (searchBy) {
+    const { currentTerm, currentSearch } = searchBy;
+    const categoryLink = links[`${type}${currentTerm.replace('?', '')}`] + currentSearch;
     return fetch(categoryLink)
       .then((response) => response.json())
       .then((data) => data[type])
