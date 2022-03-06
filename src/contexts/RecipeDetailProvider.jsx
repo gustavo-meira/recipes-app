@@ -26,7 +26,7 @@ const RecipeDetailProvider = ({ children }) => {
 
   useEffect(() => {
     fetchRecipeDetails(type, params.id)
-      .then((data) => setRecipe(data));
+      .then((data) => setRecipe(data[0]));
   }, [type, params]);
 
   const treatedRecipe = {
