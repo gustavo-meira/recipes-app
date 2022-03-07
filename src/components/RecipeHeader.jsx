@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import RecipeDetailContext from '../contexts/RecipeDetailContext';
+import ButtonFavoriteRecipe from './ButtonFavoriteRecipe';
 import ButtonShareRecipe from './ButtonShareRecipe';
 
 const RecipeHeader = () => {
@@ -15,6 +16,11 @@ const RecipeHeader = () => {
         ))
       }
       <ButtonShareRecipe />
+      <ButtonFavoriteRecipe
+        name={ recipe.name }
+        thumb={ recipe.thumb }
+        id={ recipe.id }
+      />
     </header>
   );
 };
