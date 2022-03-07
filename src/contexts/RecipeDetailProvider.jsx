@@ -30,15 +30,15 @@ const RecipeDetailProvider = ({ children }) => {
   }, [type, params]);
 
   const treatedRecipe = {
-    id: recipe?.[types[type].id],
-    thumb: recipe?.[types[type].thumb],
-    name: recipe?.[types[type].name],
+    id: params.id,
+    thumb: recipe?.[types[type].thumb] || '',
+    name: recipe?.[types[type].name] || '',
     ingredients: getIngredientsFromRecipe(recipe),
-    tags: recipe?.strTags?.split(','),
-    instructions: recipe?.strInstructions,
-    video: recipe?.strYoutube,
-    nationality: recipe?.strArea,
-    category: recipe?.strCategory,
+    tags: recipe?.strTags?.split(',') || [],
+    instructions: recipe?.strInstructions || '',
+    video: recipe?.strYoutube || '',
+    nationality: recipe?.strArea || '',
+    category: recipe?.strCategory || '',
   };
 
   return (
