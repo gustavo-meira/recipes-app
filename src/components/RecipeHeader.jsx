@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import RecipeDetailContext from '../contexts/RecipeDetailContext';
+import ButtonShareRecipe from './ButtonShareRecipe';
 
 const RecipeHeader = () => {
   const recipe = useContext(RecipeDetailContext);
-
-  console.log(recipe);
 
   return (
     <header>
@@ -15,6 +14,7 @@ const RecipeHeader = () => {
           <li key={ tag }>{ tag }</li>
         ))
       }
+      <ButtonShareRecipe />
     </header>
   );
 };
