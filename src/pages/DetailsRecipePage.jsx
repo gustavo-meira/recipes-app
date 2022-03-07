@@ -1,7 +1,11 @@
 import React from 'react';
+import RecipeDetailProvider from '../contexts/RecipeDetailProvider';
+import RecipeHeader from '../components/RecipeHeader';
 
 const DetailsRecipePage = () => (
-  <h1>Pagina de detalhes das receitas de comidas e bebidas</h1>
+  <RecipeDetailProvider>
+    <RecipeHeader />
+  </RecipeDetailProvider>
 );
 
 export default DetailsRecipePage;
