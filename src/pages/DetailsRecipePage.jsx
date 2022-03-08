@@ -5,6 +5,7 @@ import RecipeIngredientsList from '../components/RecipeIngredientsList';
 import RecipeInstructions from '../components/RecipeInstructions';
 import RecipeVideo from '../components/RecipeVideo';
 import RecipeRecomendations from '../components/RecipeRecomendations';
+import ButtonStartRecipe from '../components/ButtonStartRecipe';
 
 const DetailsRecipePage = () => {
   window.document.title = 'Recipes App - Tela de detalhes da receita';
@@ -16,6 +17,7 @@ const DetailsRecipePage = () => {
       <RecipeInstructions />
       <RecipeVideo />
       <RecipeRecomendations />
+      <ButtonStartRecipe />
     </RecipeDetailProvider>
   )
 };
