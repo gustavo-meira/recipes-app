@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import RecipeDetailContext from '../contexts/RecipeDetailContext';
+import ButtonFinishRecipe from './ButtonFinishRecipe';
 
 const RecipeIngredientListCheckbox = () => {
   const recipe = useContext(RecipeDetailContext);
@@ -29,23 +30,26 @@ const RecipeIngredientListCheckbox = () => {
   };
 
   return (
-    <ul>
-      {
-        recipe.ingredients.map((ingredient, index) => (
-          <li key={ index }>
-            <label htmlFor={ `ingredient-${index}` }>
-              <input
-                onChange={ handleCheckInput }
-                id={ `ingredient-${index}` }
-                type="checkbox"
-                checked={ ingredientsDones[`ingredient-${index}`] || false }
-              />
-              { ingredient }
-            </label>
-          </li>
-        ))
-      }
-    </ul>
+    <>
+      <ul>
+        {
+          recipe.ingredients.map((ingredient, index) => (
+            <li key={ index }>
+              <label htmlFor={ `ingredient-${index}` }>
+                <input
+                  onChange={ handleCheckInput }
+                  id={ `ingredient-${index}` }
+                  type="checkbox"
+                  checked={ ingredientsDones[`ingredient-${index}`] || false }
+                />
+                { ingredient }
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+      <ButtonFinishRecipe ingredientsDones={ ingredientsDones } />
+    </>
   );
 };
 
