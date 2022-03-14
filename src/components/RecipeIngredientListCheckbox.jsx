@@ -1,27 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import RecipeDetailContext from '../contexts/RecipeDetailContext';
 
 const RecipeIngredientListCheckbox = () => {
   const recipe = useContext(RecipeDetailContext);
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
+  const currRecipeProgress = inProgressRecipes.find(({ id }) => id === recipe.id);
+  const [ingredientsDones, setIngredientsDones] = useState(
+    currRecipeProgress || { id: recipe.id },
+  );
+  console.log(ingredientsDones);
 
-  const handleCheckInput = (event) => {
-    const { target: { id: ingredientId, checked } } = event;
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
+  useEffect(() => {
     const recipeInProgress = inProgressRecipes.some(
       (inProgressRecipe) => inProgressRecipe.id === recipe.id,
     );
     if (recipeInProgress) {
       const currIndex = inProgressRecipes.findIndex(({ id }) => id === recipe.id);
-      inProgressRecipes[currIndex] = {
-        ...inProgressRecipes[currIndex], [ingredientId]: checked,
-      };
+      inProgressRecipes[currIndex] = ingredientsDones;
     } else {
-      inProgressRecipes.push({
-        id: recipe.id,
-        [ingredientId]: checked,
-      });
+      inProgressRecipes.push(ingredientsDones);
     }
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+  }, [ingredientsDones, recipe]);
+
+  const handleCheckInput = (event) => {
+    const { target: { id: ingredientId, checked } } = event;
+    setIngredientsDones({ ...ingredientsDones, [ingredientId]: checked });
   };
 
   return (
@@ -34,6 +38,7 @@ const RecipeIngredientListCheckbox = () => {
                 onChange={ handleCheckInput }
                 id={ `ingredient-${index}` }
                 type="checkbox"
+                checked={ ingredientsDones[`ingredient-${index}`] || false }
               />
               { ingredient }
             </label>
