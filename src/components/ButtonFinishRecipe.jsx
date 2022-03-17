@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import RecipeDetailContext from '../contexts/RecipeDetailContext';
 
 const ButtonFinishRecipe = ({ allIngredientsDones }) => {
@@ -20,13 +21,15 @@ const ButtonFinishRecipe = ({ allIngredientsDones }) => {
   };
 
   return (
-    <button
-      onClick={ handleButtonFinishRecipe }
-      type="button"
-      disabled={ !allIngredientsDones }
-    >
-      Finalizar Receita
-    </button>
+    <Link to="/done-recipes">
+      <button
+        onClick={ handleButtonFinishRecipe }
+        type="button"
+        disabled={ !allIngredientsDones }
+      >
+        Finalizar Receita
+      </button>
+    </Link>
   );
 };
 
