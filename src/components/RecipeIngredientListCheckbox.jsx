@@ -17,7 +17,6 @@ const RecipeIngredientListCheckbox = () => {
     const allDone = recipe.ingredients.every((_ingredient, index) => (
       ingredients[`ingredient-${index}`] || false
     ));
-    console.log(allDone);
     if (allDone) setAllIngredientsDones(true);
     else setAllIngredientsDones(false);
   }, [ingredientsDones, recipe]);
