@@ -1,7 +1,15 @@
 import React from 'react';
+import RecipeDetailProvider from '../contexts/RecipeDetailProvider';
+import RecipeHeader from '../components/RecipeHeader';
+import RecipeIngredientListCheckbox from '../components/RecipeIngredientListCheckbox';
+import RecipeInstrucions from '../components/RecipeInstructions';
 
 const InProgressRecipePage = () => (
-  <h1>Pagina de "em progresso" das receitas de comidas e bebidas</h1>
+  <RecipeDetailProvider>
+    <RecipeHeader />
+    <RecipeInstrucions />
+    <RecipeIngredientListCheckbox />
+  </RecipeDetailProvider>
 );
 
 export default InProgressRecipePage;
