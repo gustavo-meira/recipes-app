@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ButtonFinishRecipe = ({ ingredientsDones }) => {
-  delete ingredientsDones.id;
-
-  const allDone = Object.values(ingredientsDones).every((ingredient) => ingredient);
-
-  return (
-    <button type="button" disabled={ !allDone }>
-      Finalizar Receita
-    </button>
-  );
-};
+const ButtonFinishRecipe = ({ allIngredientsDones }) => (
+  <button type="button" disabled={ !allIngredientsDones }>
+    Finalizar Receita
+  </button>
+);
 
 ButtonFinishRecipe.propTypes = {
-  ingredientsDones: PropTypes.shape({
-    id: PropTypes.string,
-  }).isRequired,
+  allIngredientsDones: PropTypes.bool.isRequired,
 };
 
 export default ButtonFinishRecipe;

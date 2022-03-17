@@ -9,7 +9,18 @@ const RecipeIngredientListCheckbox = () => {
   const [ingredientsDones, setIngredientsDones] = useState(
     currRecipeProgress || { id: recipe.id },
   );
-  console.log(ingredientsDones);
+  const [allIngredientsDones, setAllIngredientsDones] = useState(false);
+
+  useEffect(() => {
+    const ingredients = { ...ingredientsDones };
+    delete ingredients.id;
+    const allDone = recipe.ingredients.every((_ingredient, index) => (
+      ingredients[`ingredient-${index}`] || false
+    ));
+    console.log(allDone);
+    if (allDone) setAllIngredientsDones(true);
+    else setAllIngredientsDones(false);
+  }, [ingredientsDones, recipe]);
 
   useEffect(() => {
     const recipeInProgress = inProgressRecipes.some(
@@ -48,7 +59,7 @@ const RecipeIngredientListCheckbox = () => {
           ))
         }
       </ul>
-      <ButtonFinishRecipe ingredientsDones={ ingredientsDones } />
+      <ButtonFinishRecipe allIngredientsDones={ allIngredientsDones } />
     </>
   );
 };
