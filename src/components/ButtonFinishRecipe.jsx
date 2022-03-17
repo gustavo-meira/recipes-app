@@ -5,6 +5,7 @@ import RecipeDetailContext from '../contexts/RecipeDetailContext';
 
 const ButtonFinishRecipe = ({ allIngredientsDones }) => {
   const recipe = useContext(RecipeDetailContext);
+  const recipeType = window.location.href.includes('foods') ? 'foods' : 'drinks';
 
   const deleteRecipeInProgress = () => {
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -16,7 +17,7 @@ const ButtonFinishRecipe = ({ allIngredientsDones }) => {
     const { id, thumb, name } = recipe;
     const doneDate = new Date().toLocaleDateString();
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-    doneRecipes.push({ id, thumb, name, doneDate });
+    doneRecipes.push({ id, thumb, name, doneDate, recipeType });
     localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
     deleteRecipeInProgress();
   };
