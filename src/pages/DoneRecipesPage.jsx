@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
+import DoneRecipesList from '../components/DoneRecipesList';
 
 const DoneRecipesPage = () => (
   <>
-    <h1>Pagina de receitas feitas de comidas e bebidas</h1>
     <Header searchButton={ false } />
+    <DoneRecipesList />
   </>
 );
 
