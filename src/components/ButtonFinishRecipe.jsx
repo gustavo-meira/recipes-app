@@ -14,8 +14,9 @@ const ButtonFinishRecipe = ({ allIngredientsDones }) => {
 
   const handleButtonFinishRecipe = () => {
     const { id, thumb, name } = recipe;
+    const doneDate = new Date().toLocaleDateString();
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-    doneRecipes.push({ id, thumb, name });
+    doneRecipes.push({ id, thumb, name, doneDate });
     localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
     deleteRecipeInProgress();
   };
