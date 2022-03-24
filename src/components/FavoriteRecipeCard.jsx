@@ -5,10 +5,16 @@ const FavoriteRecipeCard = ({ recipe }) => {
   const {
     name,
     thumb,
+    recipeType,
+    id,
   } = recipe;
 
+  const handleButtonClick = () => {
+    window.location.href = `${recipeType}/${id}`;
+  };
+
   return (
-    <button type="button">
+    <button onClick={ handleButtonClick } type="button">
       <img src={ thumb } alt={ name } />
       <h2>{ name }</h2>
     </button>
