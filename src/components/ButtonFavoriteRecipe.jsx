@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { AiFillHeart, AiOutlineHeart  } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 const ButtonFavoriteRecipe = ({ id, name, thumb }) => {
   const [favoritedRecipe, setFavoritedRecipe] = useState(false);
+  const recipeType = window.location.href.includes('foods') ? 'foods' : 'drinks';
   const recipe = {
     id,
     name,
     thumb,
+    recipeType,
   };
 
   const icon = favoritedRecipe ? <AiFillHeart /> : <AiOutlineHeart />;
@@ -27,14 +29,14 @@ const ButtonFavoriteRecipe = ({ id, name, thumb }) => {
       localStorage.setItem('favoriteRecipes', JSON.stringify(filteredRecipes));
     } else {
       localStorage.setItem('favoriteRecipes',
-      JSON.stringify([...favoriteRecipes, recipe]));
+        JSON.stringify([...favoriteRecipes, recipe]));
     }
     setFavoritedRecipe((currFavorited) => !currFavorited);
   };
 
   return (
     <button type="button" onClick={ handleButtonFavorite }>
-      { icon }  
+      { icon }
     </button>
   );
 };
