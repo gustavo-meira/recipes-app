@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import IngredientsContext from '../contexts/IngredientsContext';
+import IngredientItem from './IngredientItem';
 
 const IngredientsList = () => {
   const ingredients = useContext(IngredientsContext);
@@ -7,10 +8,8 @@ const IngredientsList = () => {
   return (
     <ul>
       {
-        ingredients.map((ingredient, index) => (
-          <li key={ index }>
-            { ingredient }
-          </li>
+        ingredients.map((ingredient) => (
+          <IngredientItem key={ ingredient } ingredient={ ingredient } />
         ))
       }
     </ul>
