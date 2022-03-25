@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProfileButtons = () => {
   const { email } = JSON.parse(localStorage.getItem('user')) || { email: '' };
+  const navigateTo = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigateTo('/');
+  };
 
   return (
     <div>
@@ -13,7 +19,7 @@ const ProfileButtons = () => {
       <Link to="/favorite-recipes">
         <button type="button">Favorite Recipes</button>
       </Link>
-      <button type="button">Logout</button>
+      <button onClick={ handleLogout } type="button">Logout</button>
     </div>
   );
 };
