@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const NationalitiesItem = ({ nationality }) => (
   <li>
-    { nationality }
+    <Link to={ `/foods?nationality=${nationality}` }>
+      { nationality }
+    </Link>
   </li>
 );
 
