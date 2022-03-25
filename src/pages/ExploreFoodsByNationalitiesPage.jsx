@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
+import NationalitiesList from '../components/NationalitiesList';
+import NationalitiesProvider from '../contexts/NationalitiesProvider';
 
 const ExploreFoodsByNationalitiesPage = () => (
   <>
-    <h1>Pagina para explorar comidas por nacionalidade</h1>
     <Header searchButton={ false } />
+    <NationalitiesProvider>
+      <NationalitiesList />
+    </NationalitiesProvider>
   </>
 );
 
