@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
+import IngredientsList from '../components/IngredientsList';
+import IngredientsProvider from '../contexts/IngredientsProvider';
 
 const ExploreRecipesByIngredientPage = () => (
   <>
-    <h1>Pagina para explorar receitas por ingrediente para comidas ou bebidas</h1>
     <Header searchButton={ false } />
+    <IngredientsProvider>
+      <IngredientsList />
+    </IngredientsProvider>
   </>
 );
 

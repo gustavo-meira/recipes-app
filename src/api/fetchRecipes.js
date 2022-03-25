@@ -9,6 +9,7 @@ const links = {
   'drinksfirst-letter': 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
   mealsingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
   drinksingredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=',
+  mealsnationality: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=',
 };
 
 const fetchRecipes = async (type, searchBy) => {
