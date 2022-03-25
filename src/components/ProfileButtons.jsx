@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProfileButtons = () => {
   const { email } = JSON.parse(localStorage.getItem('user')) || { email: '' };
@@ -6,8 +7,12 @@ const ProfileButtons = () => {
   return (
     <div>
       <h2>{ email || 'Email não encontrado' }</h2>
-      <button type="button">Done Recipes</button>
-      <button type="button">Favorite Recipes</button>
+      <Link to="/done-recipes">
+        <button type="button">Done Recipes</button>
+      </Link>
+      <Link to="/favorite-recipes">
+        <button type="button">Favorite Recipes</button>
+      </Link>
       <button type="button">Logout</button>
     </div>
   );
