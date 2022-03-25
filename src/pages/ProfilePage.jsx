@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
+import ProfileButtons from '../components/ProfileButtons';
 
 const ProfilePage = () => (
   <>
-    <h1>Pagina de perfil do usuario</h1>
     <Header searchButton={ false } />
+    <ProfileButtons />
   </>
 );
 

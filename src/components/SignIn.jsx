@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const navigateTo = useNavigate();
 
   const testInputs = () => {
     const MIN_LENGTH_PASSWORD = 6;
@@ -14,12 +15,14 @@ const SignIn = () => {
     );
   };
 
-  const saveEmailOnLocalStorage = () => (
-    localStorage.setItem('user', JSON.stringify({ email: userEmail }))
-  );
+  const handleLogin = (e) => {
+    e.preventDefault();
+    localStorage.setItem('user', JSON.stringify({ email: userEmail }));
+    navigateTo('/foods');
+  };
 
   return (
-    <div>
+    <forms>
       <input
         type="email"
         data-cy="email-input"
@@ -34,17 +37,15 @@ const SignIn = () => {
         value={ userPassword }
         onChange={ ({ target: { value } }) => setUserPassword(value) }
       />
-      <Link to="/foods">
-        <button
-          data-cy="login-submit-button"
-          type="button"
-          disabled={ testInputs() }
-          onClick={ saveEmailOnLocalStorage }
-        >
-          Logar
-        </button>
-      </Link>
-    </div>
+      <button
+        data-cy="login-submit-button"
+        type="submit"
+        disabled={ testInputs() }
+        onClick={ handleLogin }
+      >
+        Logar
+      </button>
+    </forms>
   );
 };
 
